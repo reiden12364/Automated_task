@@ -76,7 +76,7 @@ def send_get_request_with_headers(url, headers1):
     except requests.exceptions.RequestException as e:
         print("Error while sending the GET request:", e)
         return None
-
+# --------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
     
 # STEP 1
@@ -88,16 +88,13 @@ if __name__ == "__main__":
         print("Extracted text:", extracted_text)
     
     tekst1 = "https://task.zostansecurity.ninja" + extracted_text
-    
-   
-  
     page_content = send_get_request(tekst1)
     if page_content:
         print("Response page content:")
         print(page_content)
-    
-# # STEP 2
+# --------------------------------------------------------------------------------------------------
 
+# STEP 2
 index2 = page_content.find("request:")
 extracted_text2 = page_content[index2 + len("request:"):]
 # print(extracted_text2)
@@ -126,8 +123,9 @@ page_content2 = send_get_request_with_headers(url_step2, custom_headers)
 if page_content2:
     print(page_content2)
     
-# # STEP 3
+# --------------------------------------------------------------------------------------------------
 
+#  STEP 3
 url_step3 = url + "/?step=3"
 
 # print(extracted_text2)
@@ -165,10 +163,7 @@ response = requests.post(url_step3, data={
     
 # Checking if the request was successful
 print(response.raise_for_status())
-
 print(response.text)
-
-
 
 # Saving the text to a file
 save_text_to_file(response.text, "etap")  
